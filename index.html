@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>다른 남자아이로 키우겠어</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#070306;--bg2:#0D080A;--bg3:#150E11;
+  --pri:#8B5CF6;--pri-d:#6D3FD0;--pri-l:#A78BFA;
+  --gold:#C4A882;--gold-d:#A08860;--gold-l:#E0CFA8;
+  --red:#B85050;--red-g:#C86060;
+  --tx:#E8E0D2;--tx2:#B09878;--tx3:#8A7A6A;--txd:#6A5A4E;
+  --bdr:rgba(196,168,130,0.10);--bdr2:rgba(196,168,130,0.05);
+  --c-lutze:#7888A0;--c-chester:#70906A;--c-hameris:#9080A0;
+  --rose:#A04848;
+  --fd:'Noto Serif KR','Georgia',serif;
+  --fb:'Noto Sans KR','Noto Sans JP',sans-serif;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--fd);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 120% 120% at center,var(--bg) 0%,#0A0407 20%,#0F0509 40%,#14070B 55%,#1A080D 70%,#200A0F 85%,#260B11 100%)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ═══════ INTRO ═══════ */
+nav,.sec,#hero,#cta,.bgm,.modal-overlay{position:relative;z-index:1}
+#intro{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .5s ease,visibility .5s}
+#intro.hide{opacity:0;visibility:hidden}
+.intro-bg{position:absolute;inset:0;z-index:0;display:flex;justify-content:center;align-items:flex-end;pointer-events:none;overflow:hidden}
+.intro-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.68;filter:blur(.5px) brightness(1.35) contrast(1.05)}
+.intro-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center 55%,transparent 35%,rgba(7,3,6,.30) 65%,rgba(7,3,6,.75) 88%,var(--bg) 100%)}
+.intro-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px}
+.intro-over{font-family:var(--fb);font-size:clamp(12px,1.1vw,14px);font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--tx3)}
+.intro-title{font-size:clamp(26px,5.5vw,44px);font-weight:500;color:var(--tx);letter-spacing:-.4px;text-align:center;line-height:1.3}
+.intro-sub{font-family:var(--fb);color:var(--txd);font-size:13px;letter-spacing:.5px;margin-bottom:8px}
+.lang-row{display:flex;gap:10px}
+.lang-row button{padding:10px 28px;border:1px solid var(--bdr);border-radius:2px;font-family:var(--fb);font-size:13px;font-weight:500;color:var(--tx2);letter-spacing:1px;transition:all .25s}
+.lang-row button:hover{border-color:rgba(196,168,130,.4);color:var(--pri-l)}
+
+/* ═══════ NAV ═══════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(7,3,6,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr2);opacity:0;pointer-events:none;transition:opacity .4s}
+nav.show{opacity:1;pointer-events:auto}
+.nav-brand{font-family:var(--fb);font-size:clamp(11px,.9vw,13px);letter-spacing:4px;text-transform:uppercase;color:var(--tx2);font-weight:600}
+.nav-links{display:flex;gap:28px}
+.nav-links button{font-family:var(--fb);font-size:clamp(12px,.95vw,14px);color:var(--txd);letter-spacing:1.5px;transition:color .25s;padding:0;font-weight:600}
+.nav-links button.active{color:var(--tx2)}
+.nav-links button:hover{color:var(--tx2)}
+
+/* ═══════ HERO ═══════ */
+#hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;display:flex;justify-content:center;align-items:flex-end;pointer-events:none;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:.55;filter:saturate(.85)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(0deg,var(--bg) 0%,rgba(7,3,6,.5) 20%,transparent 45%,transparent 65%,rgba(7,3,6,.4) 90%,rgba(7,3,6,.6) 100%)}
+#hero>*:not(.hero-bg){position:relative;z-index:1}
+#hero::before{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(160,80,50,.12) 0%,transparent 70%);filter:blur(60px);pointer-events:none;z-index:1}
+.hero-label{font-family:var(--fb);font-size:clamp(13px,1.3vw,17px);font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--pri);margin-bottom:32px}
+.hero-title{font-size:clamp(34px,7.5vw,74px);font-weight:500;line-height:1.2;letter-spacing:-.8px;color:var(--tx);margin-bottom:28px}
+.hero-sub{font-family:var(--fb);font-size:clamp(15px,1.7vw,22px);color:var(--gold);max-width:640px;line-height:1.85;font-weight:500;letter-spacing:.2px}
+.hero-sub strong{color:var(--gold-l);font-weight:700}
+.hero-line{width:1px;height:48px;background:linear-gradient(var(--gold),var(--red),transparent);margin-top:52px;opacity:.45}
+
+/* ═══════ SECTIONS ═══════ */
+.sec{padding:120px 48px 100px;max-width:1200px;margin:0 auto}
+.sec-label{font-family:var(--fb);font-size:clamp(13px,1.3vw,17px);font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--pri);margin-bottom:18px}
+.sec-title{font-size:clamp(26px,4.5vw,48px);font-weight:500;letter-spacing:-.5px;margin-bottom:56px;line-height:1.3}
+
+/* ═══════ CHARACTERS ═══════ */
+.main-chars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-bottom:56px}
+.char-card{position:relative;border-radius:3px;overflow:hidden;cursor:pointer;transition:transform .35s ease;aspect-ratio:2/3}
+.char-card:nth-child(1){margin-top:28px}
+.char-card:nth-child(2){margin-top:0}
+.char-card:nth-child(3){margin-top:44px}
+.char-card .card-bg{position:absolute;inset:0;transition:transform .5s ease}
+.char-card .card-bg img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.char-card .card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,3,6,.88) 0%,rgba(7,3,6,.25) 35%,transparent 55%)}
+.char-card:hover{transform:translateY(-3px)}
+.char-card:hover .card-bg{transform:scale(1.03)}
+.card-text{position:absolute;bottom:0;left:0;right:0;padding:20px 18px}
+.card-role{font-family:var(--fb);font-size:clamp(12px,1.15vw,16px);font-weight:600;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px}
+.card-name{font-size:clamp(17px,2vw,26px);font-weight:500;color:var(--tx);letter-spacing:-.3px}
+.card-bar{width:20px;height:1.5px;margin-top:10px;opacity:.6;transition:width .3s}
+.char-card:hover .card-bar{width:36px;opacity:1}
+
+/* sub characters */
+.sub-label{font-family:var(--fb);font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--tx3);margin-bottom:20px}
+.sub-row{display:flex;gap:12px}
+.sub-card{flex:1;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:3px;border:1px solid var(--bdr2);background:transparent;cursor:pointer;transition:border-color .25s,background .25s}
+.sub-card:hover{border-color:var(--bdr);background:rgba(196,168,130,.02)}
+.sub-ava{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--bg3)}
+.sub-ava img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.sub-name{font-family:var(--fb);font-size:clamp(15px,1.3vw,18px);font-weight:600;color:var(--tx);letter-spacing:-.1px}
+.sub-role-text{font-family:var(--fb);font-size:clamp(13px,1.05vw,15px);color:var(--tx2);margin-top:3px;font-weight:500}
+
+/* ═══════ MODAL ═══════ */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(7,3,6,.92);display:none;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{max-width:840px;width:100%;max-height:88vh;overflow-y:auto;border-radius:3px;border:1px solid var(--bdr);background:var(--bg2);position:relative}
+.modal-close{position:absolute;top:14px;right:14px;z-index:10;width:34px;height:34px;border-radius:2px;border:1px solid var(--bdr);background:rgba(7,3,6,.5);font-size:16px;color:var(--txd);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.modal-close:hover{border-color:rgba(196,168,130,.3);color:var(--tx2)}
+.modal-inner{display:flex}
+.modal-portrait{width:42%;min-height:440px;position:relative;overflow:hidden;flex-shrink:0;background:var(--bg3)}
+.modal-portrait img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.modal-content{flex:1;padding:36px 28px;display:flex;flex-direction:column;gap:12px}
+.modal-content .card-role{font-size:10px;letter-spacing:2.5px;margin-bottom:0}
+.modal-content .card-name{font-size:clamp(22px,3.5vw,30px);font-weight:400;letter-spacing:-.3px;margin-bottom:2px}
+.m-stats{display:flex;flex-direction:column;gap:6px;padding-top:4px}
+.m-stat{display:flex;gap:12px;font-size:clamp(13px,1vw,15px);line-height:1.55}
+.m-stat-k{font-family:var(--fb);color:var(--txd);min-width:72px;font-weight:600;letter-spacing:1px;font-size:clamp(11px,.85vw,12px);text-transform:uppercase;padding-top:2px}
+.m-stat-v{font-family:var(--fb);color:var(--tx2);font-weight:500}
+.m-desc{font-family:var(--fb);color:var(--tx2);font-size:clamp(14px,1.05vw,16px);line-height:1.85;margin-top:10px;font-weight:500}
+
+/* ═══════ WORLD ═══════ */
+.world-row{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:40px;border-radius:3px;overflow:hidden}
+.nation{padding:40px 36px;position:relative;overflow:hidden}
+.nation::before{content:'';position:absolute;inset:0;opacity:.05}
+.nation.ice{background:linear-gradient(160deg,#0C0A14 0%,var(--bg2) 100%)}
+.nation.ice::before{background:linear-gradient(160deg,var(--c-lutze),transparent)}
+.nation.warm{background:linear-gradient(160deg,#1A0E0A 0%,var(--bg2) 100%)}
+.nation.warm::before{background:linear-gradient(160deg,var(--red),transparent)}
+.nation-icon{font-size:22px;margin-bottom:12px;opacity:.6}
+.nation-name{font-size:clamp(20px,2.4vw,30px);font-weight:500;margin-bottom:12px;letter-spacing:-.3px}
+.nation-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.nation-tag{font-family:var(--fb);font-size:clamp(11px,.85vw,13px);padding:4px 12px;border-radius:2px;border:1px solid var(--bdr);color:var(--tx2);font-weight:500}
+.nation-desc{font-family:var(--fb);color:var(--tx2);font-size:clamp(14px,1.05vw,16px);line-height:1.8;font-weight:500}
+
+.power-section{margin-top:24px}
+.power-label{font-family:var(--fb);font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--tx3);margin-bottom:20px}
+.power-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.power-card{padding:28px;border-radius:3px;border:1px solid var(--bdr2);transition:border-color .25s}
+.power-card:hover{border-color:var(--bdr)}
+.power-card h4{font-size:clamp(16px,1.4vw,20px);font-weight:600;margin-bottom:10px;color:var(--tx)}
+.power-card p{font-family:var(--fb);font-size:clamp(14px,1.05vw,16px);color:var(--tx2);line-height:1.75;font-weight:500}
+
+/* ═══════ STORY ═══════ */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--pri),var(--red),rgba(196,168,130,.15))}
+.tl-item{position:relative;padding:0 0 48px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-29px;top:7px;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--pri);background:var(--bg)}
+.tl-item.branch .tl-dot{background:var(--pri);box-shadow:0 0 8px rgba(196,168,130,.3)}
+.tl-ch{font-family:var(--fb);font-size:clamp(12px,1.1vw,15px);font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px}
+.tl-title{font-size:clamp(18px,1.9vw,26px);font-weight:500;margin-bottom:4px;letter-spacing:-.3px}
+.tl-mood{font-family:var(--fb);font-size:clamp(12px,.95vw,14px);color:var(--pri);font-weight:500;margin-bottom:10px;opacity:.85}
+.tl-desc{font-family:var(--fb);font-size:clamp(15px,1.1vw,17px);color:var(--tx2);line-height:1.85;font-weight:500;max-width:720px}
+
+/* ═══════ CTA ═══════ */
+#cta{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative}
+#cta::before{content:'';position:absolute;bottom:30%;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(160,80,50,.1) 0%,transparent 70%);filter:blur(50px);pointer-events:none}
+.cta-lead{font-family:var(--fb);font-size:clamp(15px,1.2vw,18px);color:var(--tx3);line-height:1.9;margin-bottom:28px;font-weight:500}
+.cta-title{font-size:clamp(22px,3.5vw,42px);font-weight:500;margin-bottom:36px;letter-spacing:-.4px}
+.cta-btn{font-family:var(--fb);display:inline-block;padding:14px 40px;border:1px solid rgba(196,168,130,.35);border-radius:2px;font-size:clamp(14px,1.05vw,16px);font-weight:600;color:var(--pri);letter-spacing:2px;background:rgba(196,168,130,.08);cursor:pointer;transition:all .3s}
+.cta-btn:hover{background:rgba(196,168,130,.14);border-color:rgba(196,168,130,.45)}
+
+/* ═══════ BGM ═══════ */
+.bgm{position:fixed;bottom:16px;right:16px;z-index:90;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:3px;border:1px solid var(--bdr2);background:rgba(7,3,6,.8);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}
+.bgm.show{opacity:1;pointer-events:auto}
+.bgm-lbl{font-family:var(--fb);font-size:10px;color:var(--txd);letter-spacing:1px;font-weight:500}
+.bgm button{font-size:13px;width:28px;height:28px;border-radius:2px;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:border-color .25s}
+.bgm button:hover{border-color:rgba(196,168,130,.3)}
+.bgm input[type=range]{width:64px;accent-color:var(--pri);height:2px}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:768px){
+  .hero-bg img{opacity:.45}
+  .intro-bg img{opacity:.15}
+  .sec{padding:80px 20px 60px}
+  .sec-title{margin-bottom:36px}
+  .main-chars{grid-template-columns:1fr;gap:16px;max-width:440px;margin-left:auto;margin-right:auto;margin-bottom:56px}
+  .main-chars .char-card{margin-top:0;grid-column:auto}
+  .sub-row{flex-wrap:wrap}
+  .sub-card{flex:1 1 calc(50% - 6px);min-width:0}
+  .world-row{grid-template-columns:1fr}
+  .nation{padding:28px 24px}
+  .power-row{grid-template-columns:1fr}
+  .modal-inner{flex-direction:column}
+  .modal-portrait{width:100%;min-height:260px;max-height:40vh}
+  .modal-content{padding:24px 20px}
+  nav{padding:14px 16px}
+  .nav-brand{font-size:10px;letter-spacing:3px}
+  .nav-links{gap:14px}
+  .nav-links button{font-size:11px}
+  .timeline{padding-left:28px}
+  .tl-dot{left:-25px}
+  #hero{min-height:85vh;padding:70px 20px 50px}
+  #cta{min-height:40vh;padding:60px 20px}
+  .bgm{bottom:12px;right:12px;padding:6px 12px}
+}
+@media(max-width:480px){
+  .sec{padding:64px 16px 48px}
+  #hero{min-height:80vh;padding:60px 16px 40px}
+  .hero-title{font-size:clamp(28px,8vw,40px)}
+  .hero-sub{font-size:14px}
+  .main-chars{gap:14px;max-width:360px}
+  .char-card{aspect-ratio:3/4}
+  .card-text{padding:16px 14px}
+  .card-name{font-size:17px}
+  .card-role{font-size:12px;letter-spacing:1.8px}
+  .sub-row{flex-direction:column;gap:8px}
+  .sub-card{flex:1 1 100%;padding:10px 12px}
+  .sub-ava{width:36px;height:36px}
+  .lang-row{flex-direction:column;gap:8px;width:200px}
+  .lang-row button{width:100%}
+  .hero-bg img{opacity:.40}
+  .intro-title{font-size:clamp(22px,7vw,32px)}
+  .world-row{border-radius:0}
+  .nation{padding:24px 18px}
+  .tl-desc{font-size:13px}
+  .cta-title{font-size:clamp(18px,5vw,28px)}
+  .cta-lead{font-size:13px}
+  .modal{max-height:92vh;border-radius:0}
+  .modal-portrait{min-height:220px;max-height:35vh}
+  .modal-content{padding:20px 16px}
+  .modal-content .card-name{font-size:22px}
+  .nav-brand{display:none}
+  .nav-links{width:100%;justify-content:center;gap:16px}
+}
+
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- ═══════ INTRO ═══════ -->
+<div id="intro">
+  <div class="intro-bg"><img src="img/bg.png" alt=""></div>
+  <div class="intro-inner">
+  <div class="intro-over">velvetalk original</div>
+  <h1 class="intro-title" data-t="hero_title">다른 남자아이로<br>키우겠어</h1>
+  <p class="intro-sub" data-t="intro_sub">I'll Make Him into a New Man &middot; 殺された私、今世は皇帝の子を産みます</p>
+  <div class="lang-row">
+    <button onclick="init('ko')">한국어</button>
+    <button onclick="init('en')">English</button>
+    <button onclick="init('ja')">日本語</button>
+  </div>
+  </div><!-- .intro-inner -->
+</div>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <span class="nav-brand">velvetalk original</span>
+  <div class="nav-links">
+    <button class="active" data-go="hero" data-t="nav_top">TOP</button>
+    <button data-go="chars" data-t="nav_char">인물</button>
+    <button data-go="world" data-t="nav_world">세계관</button>
+    <button data-go="story" data-t="nav_story">스토리</button>
+    <button data-go="cta" data-t="nav_play">PLAY</button>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-bg"><img src="img/portraits.png" alt=""></div>
+  <div class="hero-label" data-t="hero_tag">FANTASY ROMANCE</div>
+  <h1 class="hero-title" data-t="hero_title">다른 남자아이로<br>키우겠어</h1>
+  <p class="hero-sub" data-t="hero_sub">회귀자. <strong>전생에서 살해당한 그녀</strong>가 운명을 다시 쓴다.</p>
+  <div class="hero-line"></div>
+</section>
+
+<!-- ═══════ CHARACTERS ═══════ -->
+<section id="chars" class="sec">
+  <div class="sec-label" data-t="char_label">CHARACTERS</div>
+  <h2 class="sec-title" data-t="char_title">당신의 선택이 운명을 바꾼다</h2>
+
+  <div class="main-chars">
+    <div class="char-card" onclick="openModal('lutze')">
+      <div class="card-bg"><img src="img/l01.png" alt=""></div>
+      <div class="card-overlay"></div>
+      <div class="card-text">
+        <div class="card-role" style="color:var(--c-lutze)" data-t="role_lutze">트리카스 제국 제2황자</div>
+        <div class="card-name" data-t="nm_lutze">루츠 비안트</div>
+        <div class="card-bar" style="background:var(--c-lutze)"></div>
+      </div>
+    </div>
+    <div class="char-card" onclick="openModal('chester')">
+      <div class="card-bg"><img src="img/c01.png" alt=""></div>
+      <div class="card-overlay"></div>
+      <div class="card-text">
+        <div class="card-role" style="color:var(--c-chester)" data-t="role_chester">살르 왕국 백작</div>
+        <div class="card-name" data-t="nm_chester">체테르 필</div>
+        <div class="card-bar" style="background:var(--c-chester)"></div>
+      </div>
+    </div>
+    <div class="char-card" onclick="openModal('hameris')">
+      <div class="card-bg"><img src="img/h01.png" alt=""></div>
+      <div class="card-overlay"></div>
+      <div class="card-text">
+        <div class="card-role" style="color:var(--c-hameris)" data-t="role_hameris">트리카스 제국 대신관</div>
+        <div class="card-name" data-t="nm_hameris">하메레스 히야</div>
+        <div class="card-bar" style="background:var(--c-hameris)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" data-t="sub_label">SUPPORTING CAST</div>
+  <div class="sub-row">
+    <div class="sub-card" onclick="openModal('dea')">
+      <div class="sub-ava"><img src="img/d01.png" alt=""></div>
+      <div><div class="sub-name" data-t="nm_dea">데아</div><div class="sub-role-text" data-t="sr_dea">시녀</div></div>
+    </div>
+    <div class="sub-card" onclick="openModal('evan')">
+      <div class="sub-ava"><img src="img/e01.png" alt=""></div>
+      <div><div class="sub-name" data-t="nm_evan">에반 르누브</div><div class="sub-role-text" data-t="sr_evan">측근</div></div>
+    </div>
+    <div class="sub-card" onclick="openModal('kailo')">
+      <div class="sub-ava"><img src="img/k01.png" alt=""></div>
+      <div><div class="sub-name" data-t="nm_kailo">카일로 비안트</div><div class="sub-role-text" data-t="sr_kailo">제3황자</div></div>
+    </div>
+    <div class="sub-card" onclick="openModal('psia')">
+      <div class="sub-ava"><img src="img/f01.png" alt=""></div>
+      <div><div class="sub-name" data-t="nm_psia">프시아 비안트</div><div class="sub-role-text" data-t="sr_psia">황후</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-overlay" id="charModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#215;</button>
+    <div class="modal-inner">
+      <div class="modal-portrait"><img id="mImg" src="" alt=""></div>
+      <div class="modal-content">
+        <div class="card-role" id="mRole"></div>
+        <div class="card-name" id="mName"></div>
+        <div class="m-stats" id="mStats"></div>
+        <div class="m-desc" id="mDesc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ WORLD ═══════ -->
+<section id="world" class="sec">
+  <div class="sec-label" data-t="world_label">WORLD</div>
+  <h2 class="sec-title" data-t="world_title">두 개의 대지, 하나의 운명</h2>
+
+  <div class="world-row">
+    <div class="nation ice">
+      <div class="nation-icon">&#10052;</div>
+      <div class="nation-name" data-t="wn_trikas">트리카스 제국</div>
+      <div class="nation-tags">
+        <span class="nation-tag" data-t="wt_trikas1">극한의 추위</span>
+        <span class="nation-tag" data-t="wt_trikas2">군사 대국</span>
+        <span class="nation-tag" data-t="wt_trikas3">전쟁의 승자</span>
+      </div>
+      <p class="nation-desc" data-t="wd_trikas">황제 네안도르가 통치하는 군사 강국. 전쟁에서 승리한 뒤 살르 왕국에 조공과 외교관 교환을 요구했다. 극한의 추위 속에서 단련된 제국의 군사력은 대륙 최강이다.</p>
+    </div>
+    <div class="nation warm">
+      <div class="nation-icon">&#9876;</div>
+      <div class="nation-name" data-t="wn_salr">살르 왕국</div>
+      <div class="nation-tags">
+        <span class="nation-tag" data-t="wt_salr1">온화한 기후</span>
+        <span class="nation-tag" data-t="wt_salr2">극심한 신분제</span>
+        <span class="nation-tag" data-t="wt_salr3">패전국</span>
+      </div>
+      <p class="nation-desc" data-t="wd_salr">바레셀 왕이 이끄는 패전국. 온화한 기후와 풍요로운 국토를 가졌으나, 극심한 신분 차별이 만연한 사회. 전쟁의 패배로 제국에 외교관을 보내야 하는 처지에 놓였다.</p>
+    </div>
+  </div>
+
+  <div class="power-section">
+    <div class="power-label" data-t="magic_label">POWER SYSTEMS</div>
+    <div class="power-row">
+      <div class="power-card">
+        <h4 data-t="magic_name1">마법 (Magic)</h4>
+        <p data-t="magic_desc1">트리카스 황족 한정의 힘. 빛 속성 기반으로 결계와 파괴 마법을 사용한다. 혈통에 의해서만 발현되며, 황위 계승의 정당성을 증명하는 수단이기도 하다.</p>
+      </div>
+      <div class="power-card">
+        <h4 data-t="magic_name2">주술 (Sorcery)</h4>
+        <p data-t="magic_desc2">살르 왕국에서 발달한 정령 계약 기반의 힘. 영매, 저주, 주문 등 다양한 형태로 나타나며 혈통과 무관하게 누구나 습득할 수 있다. 제국에서는 이단시된다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STORY ═══════ -->
+<section id="story" class="sec">
+  <div class="sec-label" data-t="story_label">STORY</div>
+  <h2 class="sec-title" data-t="story_title">운명의 다섯 장</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-ch">Chapter 1</div>
+      <div class="tl-title" data-t="ch1_title">엘모너의 행방</div>
+      <div class="tl-mood" data-t="ch1_mood">긴장 / 운명적 만남</div>
+      <p class="tl-desc" data-t="ch1_desc">외교관 교환의 일원으로 트리카스 제국에 도착한 당신. 그러나 도착 직후 루츠의 보물 '엘모너'가 도난당하고, 제국은 혼란에 빠진다.</p>
+    </div>
+    <div class="tl-item branch">
+      <div class="tl-dot"></div>
+      <div class="tl-ch">Chapter 2</div>
+      <div class="tl-title" data-t="ch2_title">선택의 갈림길</div>
+      <div class="tl-mood" data-t="ch2_mood">선택 / 적응</div>
+      <p class="tl-desc" data-t="ch2_desc">후궁 선발의 후보가 된 당신. 체테르의 충고를 따를 것인가, 아니면 전생의 기억을 믿고 루츠에게 다가갈 것인가.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-ch">Chapter 3</div>
+      <div class="tl-title" data-t="ch3_title">깊어지는 관계</div>
+      <div class="tl-mood" data-t="ch3_mood">로맨스 / 궁정 암투</div>
+      <p class="tl-desc" data-t="ch3_desc">루츠, 체테르, 하메레스 — 세 남자와의 관계가 깊어지는 동시에 카일로와 프시아의 음모가 궁정을 뒤흔든다.</p>
+    </div>
+    <div class="tl-item branch">
+      <div class="tl-dot"></div>
+      <div class="tl-ch">Chapter 4</div>
+      <div class="tl-title" data-t="ch4_title">저주의 비밀</div>
+      <div class="tl-mood" data-t="ch4_mood">미스터리 / 반전</div>
+      <p class="tl-desc" data-t="ch4_desc">루츠에게 걸린 어둠의 저주, 그리고 하메레스만이 아는 해법. 진실이 밝혀질수록 회귀 능력의 진정한 의미가 드러난다.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-ch">Chapter 5</div>
+      <div class="tl-title" data-t="ch5_title">왕위 계승전</div>
+      <div class="tl-mood" data-t="ch5_mood">클라이맥스 / 결말</div>
+      <p class="tl-desc" data-t="ch5_desc">제국의 왕좌를 둘러싼 최후의 전쟁. 당신이 쌓아온 관계와 선택이 모든 것을 결정짓는다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section id="cta">
+  <p class="cta-lead" data-t="cta_lead">전생에서, 나는 살해당했다.<br>이번 생은 —  다르게 키우리라.</p>
+  <h2 class="cta-title" data-t="cta_title">다시 한번 주어진 기회, 당신의 선택은?</h2>
+  <button class="cta-btn" data-t="cta_btn">지금 시작하기</button>
+</section>
+
+<!-- ═══════ BGM ═══════ -->
+<div class="bgm" id="bgmPlayer">
+  <span class="bgm-lbl">BGM</span>
+  <button id="bgmBtn" onclick="toggleBGM()">&#9654;</button>
+  <input type="range" min="0" max="100" value="30" oninput="setVol(this.value)">
+</div>
+
+<script>
+const T={
+ko:{
+  title:'다른 남자아이로 키우겠어',intro_sub:'I\'ll Make Him into a New Man \u00b7 殺された私、今世は皇帝の子を産みます',
+  nav_top:'TOP',nav_char:'인물',nav_world:'세계관',nav_story:'스토리',nav_play:'PLAY',
+  hero_tag:'FANTASY ROMANCE',hero_title:'다른 남자아이로<br>키우겠어',
+  hero_sub:'회귀자. <strong>전생에서 살해당한 그녀</strong>가 운명을 다시 쓴다.',
+  char_label:'CHARACTERS',char_title:'당신의 선택이 운명을 바꾼다',
+  role_lutze:'트리카스 제국 제2황자',nm_lutze:'루츠 비안트',
+  role_chester:'살르 왕국 백작',nm_chester:'체테르 필',
+  role_hameris:'트리카스 제국 대신관',nm_hameris:'하메레스 히야',
+  sub_label:'SUPPORTING CAST',
+  nm_dea:'데아',sr_dea:'시녀',nm_evan:'에반 르누브',sr_evan:'측근',
+  nm_kailo:'카일로 비안트',sr_kailo:'제3황자',nm_psia:'프시아 비안트',sr_psia:'황후',
+  world_label:'WORLD',world_title:'두 개의 대지, 하나의 운명',
+  wn_trikas:'트리카스 제국',wt_trikas1:'극한의 추위',wt_trikas2:'군사 대국',wt_trikas3:'전쟁의 승자',
+  wd_trikas:'황제 네안도르가 통치하는 군사 강국. 전쟁에서 승리한 뒤 살르 왕국에 조공과 외교관 교환을 요구했다. 극한의 추위 속에서 단련된 제국의 군사력은 대륙 최강이다.',
+  wn_salr:'살르 왕국',wt_salr1:'온화한 기후',wt_salr2:'극심한 신분제',wt_salr3:'패전국',
+  wd_salr:'바레셀 왕이 이끄는 패전국. 온화한 기후와 풍요로운 국토를 가졌으나, 극심한 신분 차별이 만연한 사회. 전쟁의 패배로 제국에 외교관을 보내야 하는 처지에 놓였다.',
+  magic_label:'POWER SYSTEMS',
+  magic_name1:'마법 (Magic)',magic_desc1:'트리카스 황족 한정의 힘. 빛 속성 기반으로 결계와 파괴 마법을 사용한다. 혈통에 의해서만 발현되며, 황위 계승의 정당성을 증명하는 수단이기도 하다.',
+  magic_name2:'주술 (Sorcery)',magic_desc2:'살르 왕국에서 발달한 정령 계약 기반의 힘. 영매, 저주, 주문 등 다양한 형태로 나타나며 혈통과 무관하게 누구나 습득할 수 있다. 제국에서는 이단시된다.',
+  story_label:'STORY',story_title:'운명의 다섯 장',
+  ch1_title:'엘모너의 행방',ch1_mood:'긴장 / 운명적 만남',ch1_desc:'외교관 교환의 일원으로 트리카스 제국에 도착한 당신. 그러나 도착 직후 루츠의 보물 \'엘모너\'가 도난당하고, 제국은 혼란에 빠진다.',
+  ch2_title:'선택의 갈림길',ch2_mood:'선택 / 적응',ch2_desc:'후궁 선발의 후보가 된 당신. 체테르의 충고를 따를 것인가, 아니면 전생의 기억을 믿고 루츠에게 다가갈 것인가.',
+  ch3_title:'깊어지는 관계',ch3_mood:'로맨스 / 궁정 암투',ch3_desc:'루츠, 체테르, 하메레스 — 세 남자와의 관계가 깊어지는 동시에 카일로와 프시아의 음모가 궁정을 뒤흔든다.',
+  ch4_title:'저주의 비밀',ch4_mood:'미스터리 / 반전',ch4_desc:'루츠에게 걸린 어둠의 저주, 그리고 하메레스만이 아는 해법. 진실이 밝혀질수록 회귀 능력의 진정한 의미가 드러난다.',
+  ch5_title:'왕위 계승전',ch5_mood:'클라이맥스 / 결말',ch5_desc:'제국의 왕좌를 둘러싼 최후의 전쟁. 당신이 쌓아온 관계와 선택이 모든 것을 결정짓는다.',
+  cta_lead:'전생에서, 나는 살해당했다.<br>이번 생은 \u2014  다르게 키우리라.',
+  cta_title:'다시 한번 주어진 기회, 당신의 선택은?',cta_btn:'지금 시작하기',
+  stat_labels:['HEIGHT','HAIR / EYES','BUILD','TRAIT','FEAR','DESIRE'],
+  ml_lutze_role:'트리카스 제국 제2황자',ml_lutze_stats:['195cm','검은 머리카락 / 짙은 남색 눈동자','근육질 장신','소유욕 강한 보호자','어머니의 죽음에 대한 죄책감','당신과의 미래'],
+  ml_lutze_desc:'전쟁의 신이라 불리는 제국의 제2황자. 적에게는 냉혹하고 잔인하지만, 사랑하는 이에게는 한없이 다정하다. 어머니의 유품 \'엘모너\'를 늘 지니고 있으며, 이것이 그의 어둠의 저주를 억제하는 유일한 수단이다.',
+  ml_chester_role:'살르 왕국 백작',ml_chester_stats:['금발 / 짙은 녹색 눈동자','섬세하고 창백한 미모','세련된 신사 가면 아래의 소시오패스','통제에 대한 집착','당신을 완전히 소유하는 것'],
+  ml_chester_desc:'우아한 미소 뒤에 잔혹한 본성을 숨긴 살르의 백작. 전생에서 당신을 아내로 맞이한 뒤 임신한 당신을 살해한 장본인.',
+  ml_hameris_role:'트리카스 제국 대신관',ml_hameris_stats:['백금에 가까운 은발 / 짙은 비취색 눈동자','초월적으로 아름다운 마른 체형','130세가 넘은 초월자','운명의 관찰자로서의 의무','이상(異常)을 감지한 자로서의 개입 의지'],
+  ml_hameris_desc:'130년 넘게 살아온 제국의 대신관. 차분하고 감정을 드러내지 않지만 깊은 통찰력의 소유자. 당신의 존재에서 운명의 이상을 감지하고 관심을 보이기 시작한다.',
+  ml_dea_role:'시녀',ml_dea_stats:['밝은 갈색 머리 / 짙은 갈색 눈','작은 체형','쾌활하고 걱정 많은 언니 같은 존재'],
+  ml_dea_desc:'오랫동안 당신의 곁을 지켜온 충실한 시녀. 밝고 수다스럽지만 당신의 안전을 진심으로 걱정한다.',
+  ml_evan_role:'루츠의 측근, 백작',ml_evan_stats:['카키색 머리카락 / 지적인 인상','군복 차림','냉철하지만 연애에는 서툰 남자'],
+  ml_evan_desc:'루츠의 어릴 적 친구이자 가장 신뢰하는 측근. 어둠의 저주의 비밀을 함께 공유하고 있다.',
+  ml_kailo_role:'트리카스 제국 제3황자',ml_kailo_stats:['창백한 금발 / 뱀 같은 푸른 눈','비열하고 교활함','왕좌 찬탈, 루츠 제거'],
+  ml_kailo_desc:'프시아 황후의 아들이자 루츠의 라이벌. 사병을 은밀히 키우며 왕좌를 노리고 있다.',
+  ml_psia_role:'트리카스 제국 황후',ml_psia_stats:['은발 / 보라색 눈동자','차갑고 잔혹한 미모','카일로의 즉위를 위해 루츠를 제거하려 함'],
+  ml_psia_desc:'첩에서 황후로 올라선 야심가. 카일로에 대한 뒤틀린 모성애를 가지고 있으며 루츠를 파멸시키기 위해 온갖 음모를 꾸민다.'
+},
+en:{
+  title:'I\'ll Make Him into a New Man',intro_sub:'다른 남자아이로 키우겠어 \u00b7 殺された私、今世は皇帝の子を産みます',
+  nav_top:'TOP',nav_char:'CHARACTERS',nav_world:'WORLD',nav_story:'STORY',nav_play:'PLAY',
+  hero_tag:'FANTASY ROMANCE',hero_title:'I\'LL MAKE HIM<br>INTO A NEW MAN',
+  hero_sub:'A regressor. <strong>Murdered in her past life</strong>, she returns to rewrite her fate.',
+  char_label:'CHARACTERS',char_title:'Your Choice Shapes Destiny',
+  role_lutze:'2ND PRINCE OF TRIKAS',nm_lutze:'Lutze Biant',
+  role_chester:'COUNT OF SALR',nm_chester:'Chester Phil',
+  role_hameris:'HIGH PRIEST OF TRIKAS',nm_hameris:'Hameris Hiya',
+  sub_label:'SUPPORTING CAST',
+  nm_dea:'Dea',sr_dea:'Handmaiden',nm_evan:'Evan Renoble',sr_evan:'Aide',
+  nm_kailo:'Kailo Biant',sr_kailo:'3rd Prince',nm_psia:'Psia Biant',sr_psia:'Empress',
+  world_label:'WORLD',world_title:'Two Lands, One Destiny',
+  wn_trikas:'Trikas Empire',wt_trikas1:'Extreme Cold',wt_trikas2:'Military Power',wt_trikas3:'Victor of War',
+  wd_trikas:'A military superpower ruled by Emperor Neandor. After winning the war, they demanded tribute and diplomatic exchange from Salr. Forged in extreme cold, the Empire\'s military is the continent\'s strongest.',
+  wn_salr:'Kingdom of Salr',wt_salr1:'Mild Climate',wt_salr2:'Extreme Caste System',wt_salr3:'Defeated Nation',
+  wd_salr:'A defeated kingdom led by King Baresel. Despite its mild climate and fertile lands, severe class discrimination pervades society. Forced to send diplomats to the Empire as the price of defeat.',
+  magic_label:'POWER SYSTEMS',
+  magic_name1:'Magic',magic_desc1:'Power exclusive to the Trikas royal bloodline. Light-based magic for barriers and destruction. Manifests only through lineage and serves as proof of the right to the throne.',
+  magic_name2:'Sorcery',magic_desc2:'Spirit-contract-based power developed in Salr. Takes many forms and can be learned by anyone regardless of blood. Considered heresy in the Empire.',
+  story_label:'STORY',story_title:'Five Chapters of Fate',
+  ch1_title:'The Missing Elmoner',ch1_mood:'Tension / Fateful Encounter',ch1_desc:'You arrive at the Trikas Empire as part of a diplomatic exchange. But moments after arrival, Lutze\'s treasure "Elmoner" is stolen, plunging the Empire into chaos.',
+  ch2_title:'Crossroads of Choice',ch2_mood:'Choice / Adaptation',ch2_desc:'Named a candidate for the consort selection. Will you follow Chester\'s advice, or trust your past-life memories and approach Lutze?',
+  ch3_title:'Deepening Bonds',ch3_mood:'Romance / Court Intrigue',ch3_desc:'As bonds with Lutze, Chester, and Hameris deepen, Kailo and Psia\'s conspiracies shake the court to its foundations.',
+  ch4_title:'Secret of the Curse',ch4_mood:'Mystery / Revelation',ch4_desc:'The dark curse upon Lutze, and the cure only Hameris knows. As truth unravels, the true meaning of your regression power emerges.',
+  ch5_title:'War of Succession',ch5_mood:'Climax / Ending',ch5_desc:'The final war for the imperial throne. Every bond and every choice you\'ve made decides everything.',
+  cta_lead:'In my past life, I was murdered.<br>This time \u2014  I shall raise him anew.',
+  cta_title:'A Chance Granted Once More \u2014 What Will You Choose?',cta_btn:'START NOW',
+  stat_labels:['HEIGHT','HAIR / EYES','BUILD','TRAIT','FEAR','DESIRE'],
+  ml_lutze_role:'2nd Prince of Trikas',ml_lutze_stats:['195cm','Black Hair / Dark Navy Eyes','Tall & Muscular','Possessive Protector','Guilt Over Mother\'s Death','A Future With You'],
+  ml_lutze_desc:'The Empire\'s 2nd Prince, known as the God of War. Ruthless to enemies yet endlessly tender to those he loves. He carries his mother\'s heirloom "Elmoner" \u2014 the only thing suppressing his dark curse.',
+  ml_chester_role:'Count of Salr',ml_chester_stats:['Blonde / Deep Green Eyes','Slender, Pale Beauty','Sociopath Behind a Gentleman\'s Mask','Obsession With Control','To Possess You Completely'],
+  ml_chester_desc:'A count who hides a cruel nature behind an elegant smile. In your previous life, he married you then murdered you while pregnant.',
+  ml_hameris_role:'High Priest of Trikas',ml_hameris_stats:['Near-White Blonde / Jade Eyes','Ethereally Beautiful, Slender','Over 130 Years Old','Duty as Observer of Fate','Desire to Intervene Upon Sensing Anomaly'],
+  ml_hameris_desc:'The Empire\'s High Priest who has lived over 130 years. Calm and emotionless on the surface yet possesses profound insight. He senses an anomaly in your existence and restrains his attraction to you, bound by religious law.',
+  ml_dea_role:'Handmaiden',ml_dea_stats:['Light Brown Hair / Dark Brown Eyes','Small Build','Cheerful Big-Sister Figure'],
+  ml_dea_desc:'Your loyal handmaiden who has been by your side for years. Bright and talkative, she genuinely worries about your safety.',
+  ml_evan_role:'Lutze\'s Close Aide',ml_evan_stats:['Khaki Hair / Intellectual Look','Military Uniform','Cold & Capable, Hopeless at Romance'],
+  ml_evan_desc:'Lutze\'s childhood friend and most trusted aide. Shares the secret of the dark curse.',
+  ml_kailo_role:'3rd Prince of Trikas',ml_kailo_stats:['Pale Blonde / Snake-like Blue Eyes','Vile & Cunning','Seize Throne, Eliminate Lutze'],
+  ml_kailo_desc:'Son of Empress Psia and Lutze\'s rival. Secretly raising private soldiers while eyeing the throne.',
+  ml_psia_role:'Empress of Trikas',ml_psia_stats:['Silver Hair / Purple Eyes','Cold, Cruel Beauty','Destroy Lutze for Kailo\'s Ascension'],
+  ml_psia_desc:'An ambitious woman who rose from concubine to Empress. Driven by twisted maternal obsession, she schemes to bring Lutze to ruin.'
+},
+ja:{
+  title:'殺された私、今世は皇帝の子を産みます',intro_sub:'다른 남자아이로 키우겠어 \u00b7 I\'ll Make Him into a New Man',
+  nav_top:'TOP',nav_char:'キャラクター',nav_world:'世界観',nav_story:'ストーリー',nav_play:'PLAY',
+  hero_tag:'FANTASY ROMANCE',hero_title:'殺された私、<br>今世は皇帝の子を産みます',
+  hero_sub:'回帰者。<strong>前世で殺された彼女</strong>が運命を書き換える。',
+  char_label:'CHARACTERS',char_title:'あなたの選択が運命を変える',
+  role_lutze:'トリカス帝国 第2皇子',nm_lutze:'ルーツ・ビアント',
+  role_chester:'サルル王国 伯爵',nm_chester:'チェテル・フィル',
+  role_hameris:'トリカス帝国 大神官',nm_hameris:'ハメレス・ヒヤ',
+  sub_label:'SUPPORTING CAST',
+  nm_dea:'デア',sr_dea:'侍女',nm_evan:'エヴァン・ルヌーブ',sr_evan:'側近',
+  nm_kailo:'カイロ・ビアント',sr_kailo:'第3皇子',nm_psia:'プシア・ビアント',sr_psia:'皇后',
+  world_label:'WORLD',world_title:'二つの大地、一つの運命',
+  wn_trikas:'トリカス帝国',wt_trikas1:'極寒の地',wt_trikas2:'軍事大国',wt_trikas3:'戦勝国',
+  wd_trikas:'皇帝ネアンドルが統治する軍事強国。戦争に勝利した後、サルル王国に朝貢と外交官交換を要求した。極寒の中で鍛えられた帝国の軍事力は大陸最強である。',
+  wn_salr:'サルル王国',wt_salr1:'温暖な気候',wt_salr2:'厳格な身分制',wt_salr3:'敗戦国',
+  wd_salr:'バレセル王が率いる敗戦国。温暖な気候と豊かな国土を持つが、厳しい身分差別が蔓延する社会。',
+  magic_label:'POWER SYSTEMS',
+  magic_name1:'魔法 (Magic)',magic_desc1:'トリカス皇族限定の力。光属性を基盤とし、結界と破壊魔法を使用する。血統によってのみ発現し、皇位継承の正当性を証明する手段でもある。',
+  magic_name2:'呪術 (Sorcery)',magic_desc2:'サルル王国で発達した精霊契約に基づく力。様々な形で現れ、血統に関係なく誰でも習得できる。帝国では異端とされる。',
+  story_label:'STORY',story_title:'運命の五章',
+  ch1_title:'エルモナーの行方',ch1_mood:'緊張 / 運命的な出会い',ch1_desc:'外交官交換の一員としてトリカス帝国に到着したあなた。しかし到着直後、ルーツの宝物「エルモナー」が盗まれ、帝国は混乱に陥る。',
+  ch2_title:'選択の分かれ道',ch2_mood:'選択 / 適応',ch2_desc:'後宮選抜の候補となったあなた。チェテルの忠告に従うか、前世の記憶を信じてルーツに近づくか。',
+  ch3_title:'深まる関係',ch3_mood:'ロマンス / 宮廷陰謀',ch3_desc:'ルーツ、チェテル、ハメレス — 三人の男との関係が深まる一方、カイロとプシアの陰謀が宮廷を揺るがす。',
+  ch4_title:'呪いの秘密',ch4_mood:'ミステリー / 反転',ch4_desc:'ルーツにかけられた闇の呪い、そしてハメレスだけが知る解法。真実が明かされるほど、回帰能力の真の意味が浮かび上がる。',
+  ch5_title:'王位継承戦',ch5_mood:'クライマックス / 結末',ch5_desc:'帝国の玉座をめぐる最後の戦い。あなたが築いた関係と選択がすべてを決める。',
+  cta_lead:'前世で、私は殺された。<br>今生は \u2014  違うように育てよう。',
+  cta_title:'再び与えられた機会、あなたの選択は？',cta_btn:'今すぐ始める',
+  stat_labels:['身長','髪/瞳','体格','特性','恐怖','欲望'],
+  ml_lutze_role:'トリカス帝国 第2皇子',ml_lutze_stats:['195cm','黒髪 / 深い紺色の瞳','筋肉質の長身','独占欲の強い守護者','母の死への罪悪感','あなたとの未来'],
+  ml_lutze_desc:'戦神と呼ばれる帝国の第2皇子。敵には冷酷で残忍だが、愛する者には限りなく優しい。母の遺品「エルモナー」を常に携え、それが闇の呪いを抑える唯一の手段。',
+  ml_chester_role:'サルル王国 伯爵',ml_chester_stats:['金髪 / 深い緑の瞳','繊細で蒼白な美貌','紳士の仮面の下のソシオパス','支配への執着','あなたを完全に所有すること'],
+  ml_chester_desc:'優雅な微笑みの裏に残酷な本性を隠すサルルの伯爵。前世であなたを妻に迎えた後、妊娠中のあなたを殺害した張本人。',
+  ml_hameris_role:'トリカス帝国 大神官',ml_hameris_stats:['白金に近い銀髪 / 深い翡翠色の瞳','超越的に美しい細身','130歳を超える超越者','運命の観察者としての義務','異常を感知した者としての介入意志'],
+  ml_hameris_desc:'130年以上生きてきた帝国の大神官。穏やかで感情を表に出さないが、深い洞察力の持ち主。あなたに惹かれる自分を抑える男。',
+  ml_dea_role:'侍女',ml_dea_stats:['明るい茶色の髪 / 濃い茶色の瞳','小柄な体型','明るく心配性のお姉さん的存在'],
+  ml_dea_desc:'長年あなたの傍にいる忠実な侍女。',
+  ml_evan_role:'ルーツの側近',ml_evan_stats:['カーキ色の髪 / 知的な印象','軍服姿','冷徹だが恋愛には不器用な男'],
+  ml_evan_desc:'ルーツの幼馴染で最も信頼する側近。闇の呪いの秘密を共有。',
+  ml_kailo_role:'トリカス帝国 第3皇子',ml_kailo_stats:['蒼白な金髪 / 蛇のような青い瞳','卑劣で狡猾','王座簒奪、ルーツ排除'],
+  ml_kailo_desc:'プシア皇后の息子でルーツのライバル。密かに私兵を育てながら王座を狙っている。',
+  ml_psia_role:'トリカス帝国 皇后',ml_psia_stats:['銀髪 / 紫の瞳','冷たく残酷な美貌','ルーツを排除しカイロを即位させること'],
+  ml_psia_desc:'側室から皇后に上り詰めた野心家。あらゆる陰謀を企てる。'
+}
+};
+
+const CHARS={
+  lutze:{img:'img/l01.png',accent:'var(--c-lutze)',rk:'ml_lutze_role',sk:'ml_lutze_stats',dk:'ml_lutze_desc',sc:6},
+  chester:{img:'img/c01.png',accent:'var(--c-chester)',rk:'ml_chester_role',sk:'ml_chester_stats',dk:'ml_chester_desc',sc:5},
+  hameris:{img:'img/h01.png',accent:'var(--c-hameris)',rk:'ml_hameris_role',sk:'ml_hameris_stats',dk:'ml_hameris_desc',sc:5},
+  dea:{img:'img/d01.png',accent:'var(--pri)',rk:'ml_dea_role',sk:'ml_dea_stats',dk:'ml_dea_desc',sc:3},
+  evan:{img:'img/e01.png',accent:'var(--pri)',rk:'ml_evan_role',sk:'ml_evan_stats',dk:'ml_evan_desc',sc:3},
+  kailo:{img:'img/k01.png',accent:'var(--rose)',rk:'ml_kailo_role',sk:'ml_kailo_stats',dk:'ml_kailo_desc',sc:3},
+  psia:{img:'img/f01.png',accent:'var(--rose)',rk:'ml_psia_role',sk:'ml_psia_stats',dk:'ml_psia_desc',sc:3}
+};
+
+let lang='ko';
+
+function init(l){
+  lang=l;
+  document.documentElement.lang=l==='ja'?'ja':l==='en'?'en':'ko';
+  applyLang();
+  document.getElementById('intro').classList.add('hide');
+  document.getElementById('nav').classList.add('show');
+  document.getElementById('bgmPlayer').classList.add('show');
+}
+
+function applyLang(){
+  const t=T[lang];
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const k=el.dataset.t;
+    if(t[k]!=null) el.innerHTML=t[k];
+  });
+}
+
+/* nav */
+document.querySelectorAll('[data-go]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'});
+    setActive(b);
+  });
+});
+function setActive(btn){
+  document.querySelectorAll('[data-go]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+const secs=['hero','chars','world','story','cta'];
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(!ticking){requestAnimationFrame(()=>{
+    const sy=window.scrollY+140;
+    for(let i=secs.length-1;i>=0;i--){
+      const s=document.getElementById(secs[i]);
+      if(s&&s.offsetTop<=sy){
+        const a=document.querySelector(`[data-go="${secs[i]}"]`);
+        if(a&&!a.classList.contains('active'))setActive(a);
+        break;
+      }
+    }
+    ticking=false;
+  });ticking=true;}
+});
+
+/* modal */
+function openModal(id){
+  const c=CHARS[id],t=T[lang];
+  if(!c)return;
+  document.getElementById('mImg').src=c.img;
+  const r=document.getElementById('mRole');
+  r.textContent=t[c.rk];r.style.color=c.accent;
+  document.getElementById('mName').textContent=t['nm_'+id]||id;
+  const stats=t[c.sk]||[],labels=t.stat_labels||[];
+  document.getElementById('mStats').innerHTML=stats.map((v,i)=>
+    `<div class="m-stat"><span class="m-stat-k">${labels[i]||''}</span><span class="m-stat-v">${v}</span></div>`
+  ).join('');
+  document.getElementById('mDesc').textContent=t[c.dk]||'';
+  document.getElementById('charModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('charModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('charModal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('charModal'))closeModal();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* bgm */
+let audio=null;
+function toggleBGM(){
+  if(!audio){audio=new Audio('bgm.mp3');audio.loop=true;audio.volume=.3;}
+  if(audio.paused){audio.play().catch(()=>{});document.getElementById('bgmBtn').innerHTML='\u23F8';}
+  else{audio.pause();document.getElementById('bgmBtn').innerHTML='\u25B6';}
+}
+function setVol(v){if(audio)audio.volume=v/100;}
+</script>
+</body>
+</html>
