@@ -143,16 +143,16 @@ nav.show{opacity:1;pointer-events:auto}
 .power-card p{font-family:var(--fb);font-size:clamp(14px,1.05vw,16px);color:var(--tx2);line-height:1.75;font-weight:500}
 
 /* ═══════ STORY ═══════ */
-.timeline{position:relative;padding-left:32px}
-.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--pri),var(--red),rgba(196,168,130,.15))}
-.tl-item{position:relative;padding:0 0 48px}
-.tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-29px;top:7px;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--pri);background:var(--bg)}
-.tl-item.branch .tl-dot{background:var(--pri);box-shadow:0 0 8px rgba(196,168,130,.3)}
-.tl-ch{font-family:var(--fb);font-size:clamp(12px,1.1vw,15px);font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px}
-.tl-title{font-size:clamp(18px,1.9vw,26px);font-weight:500;margin-bottom:4px;letter-spacing:-.3px}
-.tl-mood{font-family:var(--fb);font-size:clamp(12px,.95vw,14px);color:var(--pri);font-weight:500;margin-bottom:10px;opacity:.85}
-.tl-desc{font-family:var(--fb);font-size:clamp(15px,1.1vw,17px);color:var(--tx2);line-height:1.85;font-weight:500;max-width:720px}
+.story-note{font-family:var(--fb);font-size:clamp(13px,1.05vw,15px);color:var(--tx3);margin-bottom:40px;font-weight:500;line-height:1.7}
+.story-grid{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;scroll-snap-type:x proximity}
+.story-grid::-webkit-scrollbar{height:2px}
+.story-grid::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:2px}
+.story-card{flex:0 0 260px;padding:28px 24px;border:1px solid var(--bdr);border-radius:3px;background:var(--bg2);scroll-snap-align:start;transition:border-color .25s;position:relative}
+.story-card:hover{border-color:rgba(196,168,130,.18)}
+.story-card::before{content:'';position:absolute;top:24px;left:24px;width:6px;height:6px;border-radius:50%;background:var(--pri);opacity:.7}
+.sc-title{font-size:clamp(17px,1.5vw,22px);font-weight:500;margin-bottom:6px;padding-left:18px;letter-spacing:-.2px}
+.sc-mood{font-family:var(--fb);font-size:clamp(11px,.9vw,13px);color:var(--pri);font-weight:500;margin-bottom:12px;opacity:.8;padding-left:18px}
+.sc-desc{font-family:var(--fb);font-size:clamp(13px,1vw,15px);color:var(--tx2);line-height:1.8;font-weight:500}
 
 /* ═══════ CTA ═══════ */
 #cta{min-height:50vh;min-height:50dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative}
@@ -192,8 +192,8 @@ nav.show{opacity:1;pointer-events:auto}
   .nav-brand{font-size:10px;letter-spacing:3px}
   .nav-links{gap:14px}
   .nav-links button{font-size:11px}
-  .timeline{padding-left:28px}
-  .tl-dot{left:-25px}
+  .story-grid{flex-wrap:wrap;overflow-x:visible;gap:14px}
+  .story-card{flex:1 1 calc(50% - 7px);min-width:0}
   #hero{min-height:85vh;padding:70px 20px 50px}
   #cta{min-height:40vh;min-height:40dvh;padding:60px 20px}
   .bgm{bottom:12px;right:12px;padding:6px 12px}
@@ -217,7 +217,8 @@ nav.show{opacity:1;pointer-events:auto}
   .intro-title{font-size:clamp(22px,7vw,32px)}
   .world-row{border-radius:0}
   .nation{padding:24px 18px}
-  .tl-desc{font-size:13px}
+  .story-card{flex:1 1 100%}
+  .sc-desc{font-size:13px}
   .cta-title{font-size:clamp(18px,5vw,28px)}
   .cta-lead{font-size:13px}
   .modal{max-height:92vh;border-radius:0}
@@ -391,43 +392,34 @@ nav.show{opacity:1;pointer-events:auto}
 <!-- ═══════ STORY ═══════ -->
 <section id="story" class="sec">
   <div class="sec-label" data-t="story_label">STORY</div>
-  <h2 class="sec-title" data-t="story_title">운명의 다섯 장</h2>
+  <h2 class="sec-title" data-t="story_title">선택이 만드는 이야기</h2>
+  <p class="story-note" data-t="story_note">정해진 운명은 없습니다. 당신의 선택이 이야기를 바꿉니다.</p>
 
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-ch">Chapter 1</div>
-      <div class="tl-title" data-t="ch1_title">엘모너의 행방</div>
-      <div class="tl-mood" data-t="ch1_mood">긴장 / 운명적 만남</div>
-      <p class="tl-desc" data-t="ch1_desc">외교관 교환의 일원으로 트리카스 제국에 도착한 당신. 그러나 도착 직후 루츠의 보물 '엘모너'가 도난당하고, 제국은 혼란에 빠진다.</p>
+  <div class="story-grid">
+    <div class="story-card">
+      <div class="sc-title" data-t="ch1_title">엘모너의 행방</div>
+      <div class="sc-mood" data-t="ch1_mood">긴장 / 운명적 만남</div>
+      <p class="sc-desc" data-t="ch1_desc">외교관 교환의 일원으로 트리카스 제국에 도착한 당신. 그러나 도착 직후 루츠의 보물 '엘모너'가 도난당하고, 제국은 혼란에 빠진다.</p>
     </div>
-    <div class="tl-item branch">
-      <div class="tl-dot"></div>
-      <div class="tl-ch">Chapter 2</div>
-      <div class="tl-title" data-t="ch2_title">선택의 갈림길</div>
-      <div class="tl-mood" data-t="ch2_mood">선택 / 적응</div>
-      <p class="tl-desc" data-t="ch2_desc">후궁 선발의 후보가 된 당신. 체테르의 충고를 따를 것인가, 아니면 전생의 기억을 믿고 루츠에게 다가갈 것인가.</p>
+    <div class="story-card">
+      <div class="sc-title" data-t="ch2_title">선택의 갈림길</div>
+      <div class="sc-mood" data-t="ch2_mood">선택 / 적응</div>
+      <p class="sc-desc" data-t="ch2_desc">후궁 선발의 후보가 된 당신. 체테르의 충고를 따를 것인가, 아니면 전생의 기억을 믿고 루츠에게 다가갈 것인가.</p>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-ch">Chapter 3</div>
-      <div class="tl-title" data-t="ch3_title">깊어지는 관계</div>
-      <div class="tl-mood" data-t="ch3_mood">로맨스 / 궁정 암투</div>
-      <p class="tl-desc" data-t="ch3_desc">루츠, 체테르, 하메레스 — 세 남자와의 관계가 깊어지는 동시에 카일로와 프시아의 음모가 궁정을 뒤흔든다.</p>
+    <div class="story-card">
+      <div class="sc-title" data-t="ch3_title">깊어지는 관계</div>
+      <div class="sc-mood" data-t="ch3_mood">로맨스 / 궁정 암투</div>
+      <p class="sc-desc" data-t="ch3_desc">루츠, 체테르, 하메레스 — 세 남자와의 관계가 깊어지는 동시에 카일로와 프시아의 음모가 궁정을 뒤흔든다.</p>
     </div>
-    <div class="tl-item branch">
-      <div class="tl-dot"></div>
-      <div class="tl-ch">Chapter 4</div>
-      <div class="tl-title" data-t="ch4_title">저주의 비밀</div>
-      <div class="tl-mood" data-t="ch4_mood">미스터리 / 반전</div>
-      <p class="tl-desc" data-t="ch4_desc">루츠에게 걸린 어둠의 저주, 그리고 하메레스만이 아는 해법. 진실이 밝혀질수록 회귀 능력의 진정한 의미가 드러난다.</p>
+    <div class="story-card">
+      <div class="sc-title" data-t="ch4_title">저주의 비밀</div>
+      <div class="sc-mood" data-t="ch4_mood">미스터리 / 반전</div>
+      <p class="sc-desc" data-t="ch4_desc">루츠에게 걸린 어둠의 저주, 그리고 하메레스만이 아는 해법. 진실이 밝혀질수록 회귀 능력의 진정한 의미가 드러난다.</p>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-ch">Chapter 5</div>
-      <div class="tl-title" data-t="ch5_title">왕위 계승전</div>
-      <div class="tl-mood" data-t="ch5_mood">클라이맥스 / 결말</div>
-      <p class="tl-desc" data-t="ch5_desc">제국의 왕좌를 둘러싼 최후의 전쟁. 당신이 쌓아온 관계와 선택이 모든 것을 결정짓는다.</p>
+    <div class="story-card">
+      <div class="sc-title" data-t="ch5_title">왕위 계승전</div>
+      <div class="sc-mood" data-t="ch5_mood">클라이맥스 / 결말</div>
+      <p class="sc-desc" data-t="ch5_desc">제국의 왕좌를 둘러싼 최후의 전쟁. 당신이 쌓아온 관계와 선택이 모든 것을 결정짓는다.</p>
     </div>
   </div>
 </section>
@@ -468,7 +460,7 @@ ko:{
   magic_label:'POWER SYSTEMS',
   magic_name1:'마법 (Magic)',magic_desc1:'트리카스 황족 한정의 힘. 빛 속성 기반으로 결계와 파괴 마법을 사용한다. 혈통에 의해서만 발현되며, 황위 계승의 정당성을 증명하는 수단이기도 하다.',
   magic_name2:'주술 (Sorcery)',magic_desc2:'살르 왕국에서 발달한 정령 계약 기반의 힘. 영매, 저주, 주문 등 다양한 형태로 나타나며 혈통과 무관하게 누구나 습득할 수 있다. 제국에서는 이단시된다.',
-  story_label:'STORY',story_title:'운명의 다섯 장',
+  story_label:'STORY',story_title:'선택이 만드는 이야기',story_note:'정해진 운명은 없습니다. 당신의 선택이 이야기를 바꿉니다.',
   ch1_title:'엘모너의 행방',ch1_mood:'긴장 / 운명적 만남',ch1_desc:'외교관 교환의 일원으로 트리카스 제국에 도착한 당신. 그러나 도착 직후 루츠의 보물 \'엘모너\'가 도난당하고, 제국은 혼란에 빠진다.',
   ch2_title:'선택의 갈림길',ch2_mood:'선택 / 적응',ch2_desc:'후궁 선발의 후보가 된 당신. 체테르의 충고를 따를 것인가, 아니면 전생의 기억을 믿고 루츠에게 다가갈 것인가.',
   ch3_title:'깊어지는 관계',ch3_mood:'로맨스 / 궁정 암투',ch3_desc:'루츠, 체테르, 하메레스 — 세 남자와의 관계가 깊어지는 동시에 카일로와 프시아의 음모가 궁정을 뒤흔든다.',
@@ -512,7 +504,7 @@ en:{
   magic_label:'POWER SYSTEMS',
   magic_name1:'Magic',magic_desc1:'Power exclusive to the Trikas royal bloodline. Light-based magic for barriers and destruction. Manifests only through lineage and serves as proof of the right to the throne.',
   magic_name2:'Sorcery',magic_desc2:'Spirit-contract-based power developed in Salr. Takes many forms and can be learned by anyone regardless of blood. Considered heresy in the Empire.',
-  story_label:'STORY',story_title:'Five Chapters of Fate',
+  story_label:'STORY',story_title:'Stories Shaped by Your Choices',story_note:'No fate is set in stone. Your choices reshape the story.',
   ch1_title:'The Missing Elmoner',ch1_mood:'Tension / Fateful Encounter',ch1_desc:'You arrive at the Trikas Empire as part of a diplomatic exchange. But moments after arrival, Lutze\'s treasure "Elmoner" is stolen, plunging the Empire into chaos.',
   ch2_title:'Crossroads of Choice',ch2_mood:'Choice / Adaptation',ch2_desc:'Named a candidate for the consort selection. Will you follow Chester\'s advice, or trust your past-life memories and approach Lutze?',
   ch3_title:'Deepening Bonds',ch3_mood:'Romance / Court Intrigue',ch3_desc:'As bonds with Lutze, Chester, and Hameris deepen, Kailo and Psia\'s conspiracies shake the court to its foundations.',
@@ -556,7 +548,7 @@ ja:{
   magic_label:'POWER SYSTEMS',
   magic_name1:'魔法 (Magic)',magic_desc1:'トリカス皇族限定の力。光属性を基盤とし、結界と破壊魔法を使用する。血統によってのみ発現し、皇位継承の正当性を証明する手段でもある。',
   magic_name2:'呪術 (Sorcery)',magic_desc2:'サルル王国で発達した精霊契約に基づく力。様々な形で現れ、血統に関係なく誰でも習得できる。帝国では異端とされる。',
-  story_label:'STORY',story_title:'運命の五章',
+  story_label:'STORY',story_title:'選択が紡ぐ物語',story_note:'定められた運命はありません。あなたの選択が物語を変えます。',
   ch1_title:'エルモナーの行方',ch1_mood:'緊張 / 運命的な出会い',ch1_desc:'外交官交換の一員としてトリカス帝国に到着したあなた。しかし到着直後、ルーツの宝物「エルモナー」が盗まれ、帝国は混乱に陥る。',
   ch2_title:'選択の分かれ道',ch2_mood:'選択 / 適応',ch2_desc:'後宮選抜の候補となったあなた。チェテルの忠告に従うか、前世の記憶を信じてルーツに近づくか。',
   ch3_title:'深まる関係',ch3_mood:'ロマンス / 宮廷陰謀',ch3_desc:'ルーツ、チェテル、ハメレス — 三人の男との関係が深まる一方、カイロとプシアの陰謀が宮廷を揺るがす。',
