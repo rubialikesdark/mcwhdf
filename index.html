@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>다른 남자아이로 키우겠어</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
 }
 
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:var(--fd);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--tx);font-family:var(--fd);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 120% 120% at center,var(--bg) 0%,#0A0407 20%,#0F0509 40%,#14070B 55%,#1A080D 70%,#200A0F 85%,#260B11 100%)}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -39,22 +39,22 @@ nav,.sec,#hero,#cta,.bgm,.modal-overlay{position:relative;z-index:1}
 .intro-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px}
 .intro-over{font-family:var(--fb);font-size:clamp(12px,1.1vw,14px);font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--tx3)}
 .intro-title{font-size:clamp(26px,5.5vw,44px);font-weight:500;color:var(--tx);letter-spacing:-.4px;text-align:center;line-height:1.3}
-.intro-sub{font-family:var(--fb);color:var(--txd);font-size:13px;letter-spacing:.5px;margin-bottom:8px}
+.intro-sub{font-family:var(--fb);color:var(--txd);font-size:13px;letter-spacing:.5px;margin-bottom:8px;text-align:center;padding:0 16px;word-break:break-all}
 .lang-row{display:flex;gap:10px}
 .lang-row button{padding:10px 28px;border:1px solid var(--bdr);border-radius:2px;font-family:var(--fb);font-size:13px;font-weight:500;color:var(--tx2);letter-spacing:1px;transition:all .25s}
 .lang-row button:hover{border-color:rgba(196,168,130,.4);color:var(--pri-l)}
 
 /* ═══════ NAV ═══════ */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(7,3,6,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr2);opacity:0;pointer-events:none;transition:opacity .4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px max(24px,env(safe-area-inset-right)) 16px max(24px,env(safe-area-inset-left));background:rgba(7,3,6,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr2);opacity:0;pointer-events:none;transition:opacity .4s}
 nav.show{opacity:1;pointer-events:auto}
 .nav-brand{font-family:var(--fb);font-size:clamp(11px,.9vw,13px);letter-spacing:4px;text-transform:uppercase;color:var(--tx2);font-weight:600}
 .nav-links{display:flex;gap:28px}
-.nav-links button{font-family:var(--fb);font-size:clamp(12px,.95vw,14px);color:var(--txd);letter-spacing:1.5px;transition:color .25s;padding:0;font-weight:600}
+.nav-links button{font-family:var(--fb);font-size:clamp(12px,.95vw,14px);color:var(--txd);letter-spacing:1.5px;transition:color .25s;padding:0;font-weight:600;white-space:nowrap}
 .nav-links button.active{color:var(--tx2)}
 .nav-links button:hover{color:var(--tx2)}
 
 /* ═══════ HERO ═══════ */
-#hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+#hero{min-height:90vh;min-height:90dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;display:flex;justify-content:center;align-items:flex-end;pointer-events:none;overflow:hidden}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:.55;filter:saturate(.85)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:
@@ -80,10 +80,10 @@ nav.show{opacity:1;pointer-events:auto}
 .char-card:nth-child(3){margin-top:44px}
 .char-card .card-bg{position:absolute;inset:0;transition:transform .5s ease}
 .char-card .card-bg img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.char-card .card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,3,6,.88) 0%,rgba(7,3,6,.25) 35%,transparent 55%)}
+.char-card .card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,3,6,.92) 0%,rgba(7,3,6,.4) 40%,transparent 65%)}
 .char-card:hover{transform:translateY(-3px)}
 .char-card:hover .card-bg{transform:scale(1.03)}
-.card-text{position:absolute;bottom:0;left:0;right:0;padding:20px 18px}
+.card-text{position:absolute;bottom:0;left:0;right:0;padding:20px 18px;overflow:visible}
 .card-role{font-family:var(--fb);font-size:clamp(12px,1.15vw,16px);font-weight:600;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px}
 .card-name{font-size:clamp(17px,2vw,26px);font-weight:500;color:var(--tx);letter-spacing:-.3px}
 .card-bar{width:20px;height:1.5px;margin-top:10px;opacity:.6;transition:width .3s}
@@ -92,7 +92,7 @@ nav.show{opacity:1;pointer-events:auto}
 /* sub characters */
 .sub-label{font-family:var(--fb);font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--tx3);margin-bottom:20px}
 .sub-row{display:flex;gap:12px}
-.sub-card{flex:1;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:3px;border:1px solid var(--bdr2);background:transparent;cursor:pointer;transition:border-color .25s,background .25s}
+.sub-card{flex:1;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:3px;border:1px solid var(--bdr2);background:transparent;cursor:pointer;transition:border-color .25s,background .25s;min-width:0}
 .sub-card:hover{border-color:var(--bdr);background:rgba(196,168,130,.02)}
 .sub-ava{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--bg3)}
 .sub-ava img{width:100%;height:100%;object-fit:cover;object-position:top center}
@@ -102,9 +102,12 @@ nav.show{opacity:1;pointer-events:auto}
 /* ═══════ MODAL ═══════ */
 .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(7,3,6,.92);display:none;align-items:center;justify-content:center;padding:24px}
 .modal-overlay.open{display:flex}
-.modal{max-width:840px;width:100%;max-height:88vh;overflow-y:auto;border-radius:3px;border:1px solid var(--bdr);background:var(--bg2);position:relative}
+.modal{max-width:840px;width:100%;max-height:88vh;max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;border-radius:3px;border:1px solid var(--bdr);background:var(--bg2);position:relative}
 .modal-close{position:absolute;top:14px;right:14px;z-index:10;width:34px;height:34px;border-radius:2px;border:1px solid var(--bdr);background:rgba(7,3,6,.5);font-size:16px;color:var(--txd);display:flex;align-items:center;justify-content:center;transition:all .25s}
 .modal-close:hover{border-color:rgba(196,168,130,.3);color:var(--tx2)}
+.modal-back{display:none;position:sticky;bottom:0;left:0;right:0;z-index:10;padding:14px;background:linear-gradient(0deg,var(--bg2) 60%,rgba(13,8,10,.95));text-align:center}
+.modal-back button{font-family:var(--fb);font-size:14px;font-weight:600;color:var(--tx2);padding:12px 32px;border:1px solid var(--bdr);border-radius:2px;background:rgba(7,3,6,.6);letter-spacing:1px;cursor:pointer;transition:all .25s;width:100%;max-width:320px}
+.modal-back button:hover{border-color:rgba(196,168,130,.3);color:var(--tx)}
 .modal-inner{display:flex}
 .modal-portrait{width:42%;min-height:440px;position:relative;overflow:hidden;flex-shrink:0;background:var(--bg3)}
 .modal-portrait img{width:100%;height:100%;object-fit:cover;object-position:top center}
@@ -152,7 +155,7 @@ nav.show{opacity:1;pointer-events:auto}
 .tl-desc{font-family:var(--fb);font-size:clamp(15px,1.1vw,17px);color:var(--tx2);line-height:1.85;font-weight:500;max-width:720px}
 
 /* ═══════ CTA ═══════ */
-#cta{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative}
+#cta{min-height:50vh;min-height:50dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative}
 #cta::before{content:'';position:absolute;bottom:30%;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(160,80,50,.1) 0%,transparent 70%);filter:blur(50px);pointer-events:none}
 .cta-lead{font-family:var(--fb);font-size:clamp(15px,1.2vw,18px);color:var(--tx3);line-height:1.9;margin-bottom:28px;font-weight:500}
 .cta-title{font-size:clamp(22px,3.5vw,42px);font-weight:500;margin-bottom:36px;letter-spacing:-.4px}
@@ -160,7 +163,7 @@ nav.show{opacity:1;pointer-events:auto}
 .cta-btn:hover{background:rgba(196,168,130,.14);border-color:rgba(196,168,130,.45)}
 
 /* ═══════ BGM ═══════ */
-.bgm{position:fixed;bottom:16px;right:16px;z-index:90;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:3px;border:1px solid var(--bdr2);background:rgba(7,3,6,.8);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}
+.bgm{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));right:max(16px,env(safe-area-inset-right));z-index:90;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:3px;border:1px solid var(--bdr2);background:rgba(7,3,6,.8);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}
 .bgm.show{opacity:1;pointer-events:auto}
 .bgm-lbl{font-family:var(--fb);font-size:10px;color:var(--txd);letter-spacing:1px;font-weight:500}
 .bgm button{font-size:13px;width:28px;height:28px;border-radius:2px;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:border-color .25s}
@@ -169,8 +172,8 @@ nav.show{opacity:1;pointer-events:auto}
 
 /* ═══════ RESPONSIVE ═══════ */
 @media(max-width:768px){
-  .hero-bg img{opacity:.45}
-  .intro-bg img{opacity:.15}
+  .hero-bg img{opacity:.40;object-position:center 25%}
+  .intro-bg img{opacity:.45;object-position:center 35%}
   .sec{padding:80px 20px 60px}
   .sec-title{margin-bottom:36px}
   .main-chars{grid-template-columns:1fr;gap:16px;max-width:440px;margin-left:auto;margin-right:auto;margin-bottom:56px}
@@ -183,6 +186,8 @@ nav.show{opacity:1;pointer-events:auto}
   .modal-inner{flex-direction:column}
   .modal-portrait{width:100%;min-height:260px;max-height:40vh}
   .modal-content{padding:24px 20px}
+  .modal-back{display:block}
+  .modal-close{width:40px;height:40px;font-size:20px}
   nav{padding:14px 16px}
   .nav-brand{font-size:10px;letter-spacing:3px}
   .nav-links{gap:14px}
@@ -190,7 +195,7 @@ nav.show{opacity:1;pointer-events:auto}
   .timeline{padding-left:28px}
   .tl-dot{left:-25px}
   #hero{min-height:85vh;padding:70px 20px 50px}
-  #cta{min-height:40vh;padding:60px 20px}
+  #cta{min-height:40vh;min-height:40dvh;padding:60px 20px}
   .bgm{bottom:12px;right:12px;padding:6px 12px}
 }
 @media(max-width:480px){
@@ -208,7 +213,7 @@ nav.show{opacity:1;pointer-events:auto}
   .sub-ava{width:36px;height:36px}
   .lang-row{flex-direction:column;gap:8px;width:200px}
   .lang-row button{width:100%}
-  .hero-bg img{opacity:.40}
+  .hero-bg img{opacity:.35;object-position:center 20%}
   .intro-title{font-size:clamp(22px,7vw,32px)}
   .world-row{border-radius:0}
   .nation{padding:24px 18px}
@@ -220,7 +225,8 @@ nav.show{opacity:1;pointer-events:auto}
   .modal-content{padding:20px 16px}
   .modal-content .card-name{font-size:22px}
   .nav-brand{display:none}
-  .nav-links{width:100%;justify-content:center;gap:16px}
+  .nav-links{width:100%;justify-content:center;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links button{font-size:10px;letter-spacing:1px}
 }
 
 ::-webkit-scrollbar{width:3px}
@@ -335,6 +341,7 @@ nav.show{opacity:1;pointer-events:auto}
         <div class="m-desc" id="mDesc"></div>
       </div>
     </div>
+    <div class="modal-back"><button onclick="closeModal()" data-t="modal_back">&#8592; 돌아가기</button></div>
   </div>
 </div>
 
@@ -468,7 +475,7 @@ ko:{
   ch4_title:'저주의 비밀',ch4_mood:'미스터리 / 반전',ch4_desc:'루츠에게 걸린 어둠의 저주, 그리고 하메레스만이 아는 해법. 진실이 밝혀질수록 회귀 능력의 진정한 의미가 드러난다.',
   ch5_title:'왕위 계승전',ch5_mood:'클라이맥스 / 결말',ch5_desc:'제국의 왕좌를 둘러싼 최후의 전쟁. 당신이 쌓아온 관계와 선택이 모든 것을 결정짓는다.',
   cta_lead:'전생에서, 나는 살해당했다.<br>이번 생은 \u2014  다르게 키우리라.',
-  cta_title:'다시 한번 주어진 기회, 당신의 선택은?',cta_btn:'지금 시작하기',
+  cta_title:'다시 한번 주어진 기회, 당신의 선택은?',cta_btn:'지금 시작하기',modal_back:'\u2190 돌아가기',
   stat_labels:['HEIGHT','HAIR / EYES','BUILD','TRAIT','FEAR','DESIRE'],
   ml_lutze_role:'트리카스 제국 제2황자',ml_lutze_stats:['195cm','검은 머리카락 / 짙은 남색 눈동자','근육질 장신','소유욕 강한 보호자','어머니의 죽음에 대한 죄책감','당신과의 미래'],
   ml_lutze_desc:'전쟁의 신이라 불리는 제국의 제2황자. 적에게는 냉혹하고 잔인하지만, 사랑하는 이에게는 한없이 다정하다. 어머니의 유품 \'엘모너\'를 늘 지니고 있으며, 이것이 그의 어둠의 저주를 억제하는 유일한 수단이다.',
@@ -512,7 +519,7 @@ en:{
   ch4_title:'Secret of the Curse',ch4_mood:'Mystery / Revelation',ch4_desc:'The dark curse upon Lutze, and the cure only Hameris knows. As truth unravels, the true meaning of your regression power emerges.',
   ch5_title:'War of Succession',ch5_mood:'Climax / Ending',ch5_desc:'The final war for the imperial throne. Every bond and every choice you\'ve made decides everything.',
   cta_lead:'In my past life, I was murdered.<br>This time \u2014  I shall raise him anew.',
-  cta_title:'A Chance Granted Once More \u2014 What Will You Choose?',cta_btn:'START NOW',
+  cta_title:'A Chance Granted Once More \u2014 What Will You Choose?',cta_btn:'START NOW',modal_back:'\u2190 Back',
   stat_labels:['HEIGHT','HAIR / EYES','BUILD','TRAIT','FEAR','DESIRE'],
   ml_lutze_role:'2nd Prince of Trikas',ml_lutze_stats:['195cm','Black Hair / Dark Navy Eyes','Tall & Muscular','Possessive Protector','Guilt Over Mother\'s Death','A Future With You'],
   ml_lutze_desc:'The Empire\'s 2nd Prince, known as the God of War. Ruthless to enemies yet endlessly tender to those he loves. He carries his mother\'s heirloom "Elmoner" \u2014 the only thing suppressing his dark curse.',
@@ -556,7 +563,7 @@ ja:{
   ch4_title:'呪いの秘密',ch4_mood:'ミステリー / 反転',ch4_desc:'ルーツにかけられた闇の呪い、そしてハメレスだけが知る解法。真実が明かされるほど、回帰能力の真の意味が浮かび上がる。',
   ch5_title:'王位継承戦',ch5_mood:'クライマックス / 結末',ch5_desc:'帝国の玉座をめぐる最後の戦い。あなたが築いた関係と選択がすべてを決める。',
   cta_lead:'前世で、私は殺された。<br>今生は \u2014  違うように育てよう。',
-  cta_title:'再び与えられた機会、あなたの選択は？',cta_btn:'今すぐ始める',
+  cta_title:'再び与えられた機会、あなたの選択は？',cta_btn:'今すぐ始める',modal_back:'\u2190 戻る',
   stat_labels:['身長','髪/瞳','体格','特性','恐怖','欲望'],
   ml_lutze_role:'トリカス帝国 第2皇子',ml_lutze_stats:['195cm','黒髪 / 深い紺色の瞳','筋肉質の長身','独占欲の強い守護者','母の死への罪悪感','あなたとの未来'],
   ml_lutze_desc:'戦神と呼ばれる帝国の第2皇子。敵には冷酷で残忍だが、愛する者には限りなく優しい。母の遺品「エルモナー」を常に携え、それが闇の呪いを抑える唯一の手段。',
@@ -633,6 +640,7 @@ window.addEventListener('scroll',()=>{
 });
 
 /* modal */
+let modalOpen=false;
 function openModal(id){
   const c=CHARS[id],t=T[lang];
   if(!c)return;
@@ -647,15 +655,21 @@ function openModal(id){
   document.getElementById('mDesc').textContent=t[c.dk]||'';
   document.getElementById('charModal').classList.add('open');
   document.body.style.overflow='hidden';
+  if(!modalOpen){history.pushState({modal:true},'');modalOpen=true;}
 }
 function closeModal(){
+  if(!document.getElementById('charModal').classList.contains('open'))return;
   document.getElementById('charModal').classList.remove('open');
   document.body.style.overflow='';
+  if(modalOpen){modalOpen=false;}
 }
-document.getElementById('charModal').addEventListener('click',e=>{
-  if(e.target===document.getElementById('charModal'))closeModal();
+window.addEventListener('popstate',function(e){
+  if(modalOpen)closeModal();
 });
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.getElementById('charModal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('charModal')){closeModal();if(history.state&&history.state.modal)history.back();}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();if(history.state&&history.state.modal)history.back();}});
 
 /* bgm */
 let audio=null;
